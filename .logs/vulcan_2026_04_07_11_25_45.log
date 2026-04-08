@@ -1,5 +1,0 @@
-2026-04-07 11:25:46,236 - MainThread - snowflake.connector.connection - INFO - Snowflake Connector for Python Version: 3.14.0, Python Version: 3.10.20, Platform: Linux-6.17.0-19-generic-x86_64-with-glibc2.41 (connection.py:423)
-2026-04-07 11:25:46,237 - MainThread - snowflake.connector.connection - INFO - Connecting to GLOBAL Snowflake domain (connection.py:1226)
-2026-04-07 11:25:46,237 - MainThread - snowflake.connector.connection - INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity. (connection.py:1315)
-2026-04-07 11:25:47,926 - MainThread - snowflake.connector.connection - INFO - closed (connection.py:810)
-2026-04-07 11:25:47,927 - MainThread - snowflake.connector.connection - INFO - No async queries seem to be running, deleting session (connection.py:816)

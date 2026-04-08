@@ -8,5 +8,8 @@ migration_backup/
 checks_old/
 semantics_old/
 ml_container/.logs/
+ml_container/
+_write_test
+models/_write_test
 .DS_Store
 derby.log

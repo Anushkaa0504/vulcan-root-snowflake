@@ -1,3 +1,0 @@
-2026-04-07 11:27:18,872 - MainThread - vulcan.core.state_sync.common - INFO - Cleaned up 0 expired snapshots (janitor.py:181)
-2026-04-07 11:27:18,882 - MainThread - vulcan.core.state_sync.db.interval - INFO - Compacting 0 intervals for 0 snapshots (interval.py:130)
-2026-04-07 11:27:19,119 - MainThread - vulcan.core.context - INFO - No models executed successfully in run 'a22338212f82401b9492fd3ecd1d74f7'. Skipping data quality checks. (context.py:2302)
