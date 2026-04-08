@@ -1,3 +1,12 @@
 venv/
 __pycache__/
 *.pyc
+.cache/
+.logs/
+metastore_db/
+migration_backup/
+checks_old/
+semantics_old/
+ml_container/.logs/
+.DS_Store
+derby.log
