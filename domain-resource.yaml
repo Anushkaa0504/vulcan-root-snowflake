@@ -13,12 +13,11 @@ spec:
   engine: snowflake
 
   repo:
-    url: https://bitbucket.org/rubik_/vulcan-examples
+    url: https://github.com/Anushkaa0504/vulcan-root-snowflake.git
     syncFlags:
-      - --ref=shreya-examples
+      - --ref=main
       - --submodules=off
-    baseDir: vulcan-examples/deployment-demo/snowflake-depot
-    secret: qa:git-sync
+    baseDir: .
 
   depots:
     - dataos://snowflakevulcan?purpose=rw

@@ -1,11 +1,10 @@
 name: vulcan-root-snowflake
 display_name: Root Snowflake Data Product
 tenant: qa
-description: Production Snowflake analytics on SNOWFLAKE_SAMPLE_DATA.TPCH_SF1 using depot-based connection. Credentials managed by DataOS depot, no env-var projections needed.
+description: Root Snowflake analytics on SNOWFLAKE_SAMPLE_DATA.TPCH_SF1 using depot-based connection. Credentials managed by DataOS depot, no env-var projections needed.
 
 tags:
   - snowflake
-  - tpch
   - production
   - depot
 
@@ -24,9 +23,9 @@ metadata:
     - Requires Snowflake warehouse permissions for the target schema
 
 users:
-  - username: your-dataos-user
-    github_username: your-github-user
-    email: your.email@example.com
+  - username: anushkarakeshtmdcio
+    github_username: Anushkaa0504
+    email: anushka.rakesh@tmdc.io
     type: OWNER
 
 analytics:
@@ -41,51 +40,9 @@ gateways:
       type: depot
       address: dataos://snowflakevulcan
 
-  snowflake:
-    connection:
-      type: snowflake
-      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      user: "{{ env_var('SNOWFLAKE_USER') }}"
-      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
-      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
-      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
-      role: "{{ env_var('SNOWFLAKE_ROLE', '') }}"
-      authenticator: "{{ env_var('SNOWFLAKE_AUTHENTICATOR', 'snowflake') }}"
-      concurrent_tasks: 2
-    state_connection:
-      type: postgres
-      host: "{{ env_var('STATESTORE_HOST', 'statestore') }}"
-      port: "{{ env_var('STATESTORE_PORT', '5432') }}"
-      user: "{{ env_var('STATESTORE_USER', 'vulcan') }}"
-      password: "{{ env_var('STATESTORE_PASSWORD', 'vulcan') }}"
-      database: "{{ env_var('STATESTORE_DATABASE', 'statestore') }}"
-    state_schema: "{{ env_var('STATE_SCHEMA', 'vulcan_root_snowflake') }}"
-
-default_gateway: default
-
-object_store:
-  provider: minio
-  bucket: warehouse
-  base_path: queries
-  compression: snappy
-  presigned_url_expiry_mins: 60
-  credentials:
-    endpoint_url: "{{ env_var('MINIO_ENDPOINT', 'http://minio:9000') }}"
-    access_key_id: admin
-    secret_access_key: password
-    region: us-east-1
-
 model_defaults:
   dialect: snowflake
   cron: "@daily"
 
 heimdall:
   enabled: false
-
-transpiler:
-  base_url: "{{ env_var('VULCAN__TRANSPILER__BASE_URL', 'http://vulcan-transpiler-api:8100') }}"
-  timeout: 30
-
-graphql:
-  base_url: "{{ env_var('VULCAN__GRAPHQL__BASE_URL', 'http://vulcan-graphql:3000') }}"
-  timeout: 60
