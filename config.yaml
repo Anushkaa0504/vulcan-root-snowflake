@@ -1,34 +1,17 @@
 name: vulcan-root-snowflake
 display_name: Root Snowflake Data Product
 tenant: qa
-description: Root Snowflake analytics on SNOWFLAKE_SAMPLE_DATA.TPCH_SF1 using depot-based connection. Credentials managed by DataOS depot, no env-var projections needed.
+description: Snowflake analytics on SNOWFLAKE_SAMPLE_DATA.TPCH_SF1 using depot-based connection.
 
 tags:
   - snowflake
   - production
   - depot
 
-terms:
-  - glossary.orders
-  - glossary.revenue
-
-metadata:
-  domain: finance
-  use_cases:
-    - Curated order analytics
-    - Revenue reporting
-    - Customer health monitoring
-  limitations:
-    - Replace placeholder depot, secret, and object store settings before deployment
-    - Requires Snowflake warehouse permissions for the target schema
-
 users:
   - username: anushkarakeshtmdcio
     email: anushka.rakesh@tmdc.io
     type: OWNER
-
-analytics:
-  enabled: false
 
 linter:
   enabled: true
@@ -42,6 +25,3 @@ gateways:
 model_defaults:
   dialect: snowflake
   cron: "@daily"
-
-heimdall:
-  enabled: false
