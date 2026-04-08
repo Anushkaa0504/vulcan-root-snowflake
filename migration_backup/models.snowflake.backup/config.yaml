@@ -1,0 +1,102 @@
+name: "workspace"
+# display_name: "Human Friendly Name"
+tenant: "default"
+description: "workspace Vulcan project."
+
+# Optional categorization
+tags: []  # e.g. ["marketing", "saas", "analytics"]
+terms: []  # e.g. ["glossary.data_product", "glossary.business_intelligence"]
+
+# Metadata (domain, use cases, limitations) - edit as needed
+metadata:
+  domain: "default"
+  use_cases:
+    - "Example use case"
+  limitations:
+    - "Example limitation"
+
+# Owners/users (used for approvals / notifications in some setups) - edit as needed
+users:
+  - username: "example"
+    github_username: "example"
+    email: "example@example.com"
+    type: "MEMBER"
+
+# notification_targets:
+#   - type: console
+#     notify_on:
+#       - apply_start
+#       - apply_end
+#       - run_start
+#       - run_end
+#       - migration_start
+#       - migration_end
+#       - apply_failure
+#       - run_failure
+#       - audit_failure
+#       - migration_failure
+#       - plan_change
+#       - check_start
+#       - check_end
+#       - check_failure
+
+# --- Gateway Connection ---
+gateways:
+  snowflake:
+    connection:
+      # For more information on configuring the connection to your execution engine, visit:
+      # https://tmdc-io.github.io/vulcan-book/
+      type: snowflake
+      account: 
+      # concurrent_tasks: 4
+      # register_comments: True
+      # pre_ping: False
+      # pretty_sql: False
+      # schema_differ_overrides: 
+      # catalog_type_overrides: 
+      # user: 
+      # password: 
+      # warehouse: 
+      # database: 
+      # role: 
+      # authenticator: 
+      # token: 
+      # host: 
+      # port: 
+      # application: Tobiko_SQLMesh
+      # private_key: 
+      # private_key_path: 
+      # private_key_passphrase: 
+      # session_parameters: 
+
+    # State sync - use PostgreSQL (recommended for production)
+    state_connection:
+      type: postgres
+      host: localhost
+      port: 5431
+      user: vulcan
+      password: vulcan
+      database: statestore
+
+    # State schema name
+    # state_schema: workspace
+default_gateway: snowflake
+
+# --- Model Defaults ---
+# https://tmdc-io.github.io/vulcan-book/
+
+model_defaults:
+  dialect: snowflake
+  start: 2026-03-31 # Start date for backfill history
+  cron: '@daily'    # Run models daily at 12am UTC (can override per model)
+
+# --- Linting Rules ---
+# Enforce standards for your team
+# https://tmdc-io.github.io/vulcan-book/
+
+linter:
+  enabled: true
+  rules:
+    - ambiguousorinvalidcolumn
+    - invalidselectstarexpansion
+    - noambiguousprojections

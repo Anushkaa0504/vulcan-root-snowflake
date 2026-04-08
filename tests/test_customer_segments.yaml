@@ -1,0 +1,41 @@
+test_sales_customer_segments:
+  model: sales.customer_segments
+  inputs:
+    mart.features:
+      rows:
+      - o_custkey: 10
+        total_orders: 60
+        avg_order_value: 2000.0
+        total_spent: 120000.0
+      - o_custkey: 20
+        total_orders: 12
+        avg_order_value: 900.0
+        total_spent: 10800.0
+      - o_custkey: 30
+        total_orders: 3
+        avg_order_value: 100.0
+        total_spent: 300.0
+  outputs:
+    query:
+      rows:
+      - o_custkey: 10
+        total_orders: 60
+        avg_order_value: 2000.0
+        total_spent: 120000.0
+        revenue_per_order: 2000.0
+        spend_tier: PLATINUM
+        order_frequency_segment: FREQUENT
+      - o_custkey: 20
+        total_orders: 12
+        avg_order_value: 900.0
+        total_spent: 10800.0
+        revenue_per_order: 900.0
+        spend_tier: SILVER
+        order_frequency_segment: ACTIVE
+      - o_custkey: 30
+        total_orders: 3
+        avg_order_value: 100.0
+        total_spent: 300.0
+        revenue_per_order: 100.0
+        spend_tier: BRONZE
+        order_frequency_segment: OCCASIONAL

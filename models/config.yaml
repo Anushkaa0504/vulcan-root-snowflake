@@ -1,0 +1,73 @@
+name: vulcan-try-snowflake
+tenant: default
+description: Minimal Vulcan project for local Snowflake development.
+
+metadata:
+  domain: default
+  use_cases:
+    - Local Snowflake plan/run
+  limitations:
+    - Requires SNOWFLAKE_* environment variables
+
+users:
+  - username: example
+    github_username: example
+    email: example@example.com
+    type: MEMBER
+
+analytics:
+  enabled: false
+
+linter:
+  enabled: false
+
+object_store:
+  provider: minio
+  bucket: warehouse
+  base_path: queries
+  compression: snappy
+  presigned_url_expiry_mins: 60
+  credentials:
+    endpoint_url: "{{ env_var('MINIO_ENDPOINT', 'http://minio:9000') }}"
+    access_key_id: admin
+    secret_access_key: password
+    region: us-east-1
+
+gateways:
+  snowflake:
+    connection:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE', '') }}"
+      authenticator: "{{ env_var('SNOWFLAKE_AUTHENTICATOR', 'snowflake') }}"
+      concurrent_tasks: 2
+    state_connection:
+      type: postgres
+      host: "{{ env_var('STATESTORE_HOST', 'statestore') }}"
+      port: "{{ env_var('STATESTORE_PORT', '5432') }}"
+      user: vulcan
+      password: vulcan
+      database: statestore
+    state_schema: "vulcan_anushka"
+
+default_gateway: snowflake
+
+model_defaults:
+  dialect: snowflake
+  start: "2021-02-25"
+  cron: "*/5 * * * *"
+
+heimdall:
+  enabled: false
+
+transpiler:
+  base_url: http://vulcan-transpiler-api:8100
+  timeout: 30
+
+graphql:
+  base_url: http://vulcan-graphql:3000
+  timeout: 60

@@ -1,0 +1,31 @@
+test_mart_features_aggregates:
+  model: mart.features
+  inputs:
+    staging.stg_orders:
+      rows:
+      - o_orderkey: 1
+        o_custkey: 10
+        o_orderdate: 2025-01-01
+        o_totalprice: 100
+        total_events: 1
+      - o_orderkey: 2
+        o_custkey: 10
+        o_orderdate: 2025-01-02
+        o_totalprice: 50
+        total_events: 1
+      - o_orderkey: 3
+        o_custkey: 20
+        o_orderdate: 2025-01-03
+        o_totalprice: 80
+        total_events: 1
+  outputs:
+    query:
+      rows:
+      - o_custkey: 10
+        total_orders: 2
+        avg_order_value: 75.0
+        total_spent: 150.0
+      - o_custkey: 20
+        total_orders: 1
+        avg_order_value: 80.0
+        total_spent: 80.0

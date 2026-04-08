@@ -1,0 +1,79 @@
+name: vulcan-root-snowflake
+display_name: Root Snowflake Data Product
+tenant: default
+description: Root Vulcan data product configured for managed deployment on DataOS.
+
+tags:
+  - vulcan
+  - snowflake
+  - data-product
+
+terms:
+  - glossary.orders
+  - glossary.revenue
+
+metadata:
+  domain: finance
+  use_cases:
+    - Curated order analytics
+    - Revenue reporting
+    - Customer health monitoring
+  limitations:
+    - Replace placeholder depot, secret, and object store settings before deployment
+    - Requires Snowflake warehouse permissions for the target schema
+
+users:
+  - username: your-dataos-user
+    github_username: your-github-user
+    email: your.email@example.com
+    type: OWNER
+
+analytics:
+  enabled: false
+
+linter:
+  enabled: false
+
+object_store:
+  provider: minio
+  bucket: "{{ env_var('OBJECT_STORE_BUCKET', 'warehouse') }}"
+  base_path: "{{ env_var('OBJECT_STORE_BASE_PATH', 'queries') }}"
+  compression: snappy
+  presigned_url_expiry_mins: 60
+  credentials:
+    endpoint_url: "{{ env_var('OBJECT_STORE_ENDPOINT_URL', 'https://object-store.example.com') }}"
+    access_key_id: "{{ env_var('OBJECT_STORE_ACCESS_KEY_ID', 'replace-me') }}"
+    secret_access_key: "{{ env_var('OBJECT_STORE_SECRET_ACCESS_KEY', 'replace-me') }}"
+    region: "{{ env_var('OBJECT_STORE_REGION', 'us-east-1') }}"
+
+gateways:
+  default:
+    connection:
+      type: depot
+      address: dataos://your-snowflake-depot
+    state_connection:
+      type: postgres
+      host: "{{ env_var('STATESTORE_HOST', 'replace-me-statestore-host') }}"
+      port: "{{ env_var('STATESTORE_PORT', '5432') }}"
+      user: "{{ env_var('STATESTORE_USER', 'vulcan') }}"
+      password: "{{ env_var('STATESTORE_PASSWORD', 'replace-me') }}"
+      database: "{{ env_var('STATESTORE_DATABASE', 'statestore') }}"
+    state_schema: "{{ env_var('STATE_SCHEMA', 'vulcan_root_snowflake') }}"
+
+default_gateway: default
+
+model_defaults:
+  dialect: snowflake
+  start: "2025-01-01"
+  cron: "@daily"
+
+heimdall:
+  enabled: false
+
+transpiler:
+  base_url: "{{ env_var('VULCAN__TRANSPILER__BASE_URL', 'https://transpiler.example.com') }}"
+  timeout: 30
+
+graphql:
+  base_url: "{{ env_var('VULCAN__GRAPHQL__BASE_URL', 'https://graphql.example.com') }}"
+  timeout: 60

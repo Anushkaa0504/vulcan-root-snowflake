@@ -1,0 +1,22 @@
+semantic_models:
+  sales.customer_segments:
+    alias: customer_segments
+
+    dimensions:
+      includes:
+        - O_CUSTKEY
+        - SPEND_TIER
+        - ORDER_FREQUENCY_SEGMENT
+
+    measures:
+      total_orders:
+        expression: "{customer_segments.TOTAL_ORDERS}"
+        type: sum
+
+      total_spent:
+        expression: "{customer_segments.TOTAL_SPENT}"
+        type: sum
+
+      revenue_per_order:
+        expression: "{customer_segments.REVENUE_PER_ORDER}"
+        type: sum

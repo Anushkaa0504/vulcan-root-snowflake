@@ -1,0 +1,19 @@
+<div>
+  <div id="sqlglot-lineage"></div>
+  <script type="text/javascript" src="https://unpkg.com/vis-data@latest/peer/umd/vis-data.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/vis-network@latest/peer/umd/vis-network.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/vis-network/styles/vis-network.min.css" />
+  <script type="text/javascript">
+    var nodes = new vis.DataSet([{"id": "\"vulcan_dw\".\"mart\".\"features\"", "label": "mart.features", "title": "<span>\"vulcan_dw\".\"mart\".\"features\"</span>"}, {"id": "\"vulcan_dw\".\"staging\".\"stg_orders\"", "label": "staging.stg_orders", "title": "<span>\"vulcan_dw\".\"staging\".\"stg_orders\"</span>"}, {"id": "\"vulcan_dw\".\"raw\".\"raw_orders\"", "label": "raw.raw_orders", "title": "<span>\"vulcan_dw\".\"raw\".\"raw_orders\"</span>"}, {"id": "\"vulcan_dw\".\"mart\".\"weekly_orders\"", "label": "mart.weekly_orders", "title": "<span>\"vulcan_dw\".\"mart\".\"weekly_orders\"</span>"}, {"id": "\"vulcan_dw\".\"mart\".\"python_daily_signal_registry\"", "label": "mart.python_daily_signal_registry", "title": "<span>\"vulcan_dw\".\"mart\".\"python_daily_signal_registry\"</span>"}, {"id": "\"vulcan_dw\".\"mart\".\"python_daily_signal\"", "label": "mart.python_daily_signal", "title": "<span>\"vulcan_dw\".\"mart\".\"python_daily_signal\"</span>"}, {"id": "\"vulcan_dw\".\"mart\".\"python_daily_signal_alerts\"", "label": "mart.python_daily_signal_alerts", "title": "<span>\"vulcan_dw\".\"mart\".\"python_daily_signal_alerts\"</span>"}, {"id": "\"vulcan_dw\".\"mart\".\"python_daily_signal_drift\"", "label": "mart.python_daily_signal_drift", "title": "<span>\"vulcan_dw\".\"mart\".\"python_daily_signal_drift\"</span>"}])
+    nodes.forEach(row => row["title"] = new DOMParser().parseFromString(row["title"], "text/html").body.childNodes[0])
+
+    new vis.Network(
+        document.getElementById("sqlglot-lineage"),
+        {
+            nodes: nodes,
+            edges: new vis.DataSet([{"from": "\"vulcan_dw\".\"staging\".\"stg_orders\"", "to": "\"vulcan_dw\".\"mart\".\"features\""}, {"from": "\"vulcan_dw\".\"raw\".\"raw_orders\"", "to": "\"vulcan_dw\".\"staging\".\"stg_orders\""}, {"from": "\"vulcan_dw\".\"staging\".\"stg_orders\"", "to": "\"vulcan_dw\".\"mart\".\"weekly_orders\""}, {"from": "\"vulcan_dw\".\"mart\".\"python_daily_signal\"", "to": "\"vulcan_dw\".\"mart\".\"python_daily_signal_registry\""}, {"from": "\"vulcan_dw\".\"mart\".\"features\"", "to": "\"vulcan_dw\".\"mart\".\"python_daily_signal\""}, {"from": "\"vulcan_dw\".\"mart\".\"python_daily_signal_drift\"", "to": "\"vulcan_dw\".\"mart\".\"python_daily_signal_alerts\""}, {"from": "\"vulcan_dw\".\"mart\".\"python_daily_signal\"", "to": "\"vulcan_dw\".\"mart\".\"python_daily_signal_drift\""}])
+        },
+        {"height": "100%", "width": "100%", "layout": {"hierarchical": {"enabled": true, "nodeSpacing": 250, "sortMethod": "directed"}}, "interaction": {"hover": true, "hoverConnectedEdges": true, "selectConnectedEdges": true, "tooltipDelay": 200, "navigationButtons": true, "keyboard": true, "zoomView": true, "dragView": true, "dragNodes": true}, "physics": {"enabled": false}, "edges": {"arrows": "to"}, "nodes": {"shape": "box", "font": {"size": 16}}},
+    )
+  </script>
+</div>

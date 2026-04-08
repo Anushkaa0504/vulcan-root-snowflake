@@ -1,0 +1,16 @@
+semantic_models:
+  sales.daily_events:
+    alias: daily_events
+
+    dimensions:
+      includes:
+        - EVENT_DATE
+
+    measures:
+      total_events:
+        expression: "{daily_events.TOTAL_EVENTS}"
+        type: sum
+
+      unique_items:
+        expression: "{daily_events.UNIQUE_ITEMS}"
+        type: sum

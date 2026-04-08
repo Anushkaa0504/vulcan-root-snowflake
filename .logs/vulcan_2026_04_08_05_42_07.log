@@ -1,0 +1,2 @@
+2026-04-08 05:42:11,075 - MainThread - vulcan.core.config.connection - INFO - Creating new DuckDB adapter for in-memory database (connection.py:515)
+2026-04-08 05:42:11,207 - MainThread - vulcan.core.config.connection - INFO - Creating new DuckDB adapter for in-memory database (connection.py:515)

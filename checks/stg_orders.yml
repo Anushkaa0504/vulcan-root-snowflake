@@ -1,0 +1,13 @@
+checks:
+  staging.stg_orders:
+
+    accuracy:
+      - row_count > 1:
+          name: sufficient_data
+
+      - anomaly detection for row_count:
+          name: row_count_anomaly
+
+    completeness:
+      - missing_count(o_orderkey) = 0:
+          name: order_key_not_null

@@ -1,0 +1,32 @@
+checks:
+  sales.customer_segments:
+
+    completeness:
+      - row_count > 0:
+          name: has_rows
+
+      - missing_count(o_custkey) = 0:
+          name: customer_key_not_null
+
+    validity:
+      - failed rows:
+          name: spend_tier_enum
+          fail query: |
+            SELECT o_custkey, spend_tier
+            FROM sales.customer_segments
+            WHERE spend_tier NOT IN ('PLATINUM', 'GOLD', 'SILVER', 'BRONZE')
+               OR spend_tier IS NULL
+          samples limit: 10
+          attributes:
+            description: "spend_tier must be one of the allowed segment values."
+
+      - failed rows:
+          name: frequency_segment_enum
+          fail query: |
+            SELECT o_custkey, order_frequency_segment
+            FROM sales.customer_segments
+            WHERE order_frequency_segment NOT IN ('FREQUENT', 'ACTIVE', 'OCCASIONAL')
+               OR order_frequency_segment IS NULL
+          samples limit: 10
+          attributes:
+            description: "order_frequency_segment must be one of the allowed segment values."

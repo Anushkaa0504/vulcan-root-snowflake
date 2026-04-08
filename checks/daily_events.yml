@@ -1,0 +1,21 @@
+checks:
+  sales.daily_events:
+
+    completeness:
+      - row_count > 0:
+          name: has_rows
+
+      - missing_count(event_date) = 0:
+          name: event_date_not_null
+
+    validity:
+      - failed rows:
+          name: non_negative_total_events
+          fail query: |
+            SELECT event_date, total_events
+            FROM sales.daily_events
+            WHERE total_events IS NULL
+               OR total_events < 0
+          samples limit: 10
+          attributes:
+            description: "total_events should be non-negative and present."

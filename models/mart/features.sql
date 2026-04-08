@@ -1,0 +1,12 @@
+MODEL (
+  name mart.features,
+  kind FULL
+);
+
+SELECT
+  O_CUSTKEY,
+  COUNT(*) AS TOTAL_ORDERS,
+  AVG(O_TOTALPRICE) AS AVG_ORDER_VALUE,
+  SUM(O_TOTALPRICE) AS TOTAL_SPENT
+FROM staging.stg_orders
+GROUP BY O_CUSTKEY

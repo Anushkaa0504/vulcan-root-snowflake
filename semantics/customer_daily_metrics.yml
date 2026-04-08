@@ -1,0 +1,21 @@
+semantic_models:
+  sales.customer_daily_metrics:
+    alias: customer_daily_metrics
+
+    dimensions:
+      includes:
+        - ORDER_DATE
+        - O_CUSTKEY
+
+    measures:
+      total_orders:
+        expression: "{customer_daily_metrics.TOTAL_ORDERS}"
+        type: sum
+
+      total_revenue:
+        expression: "{customer_daily_metrics.TOTAL_REVENUE}"
+        type: sum
+
+      avg_order_value:
+        expression: "{customer_daily_metrics.AVG_ORDER_VALUE}"
+        type: sum

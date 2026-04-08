@@ -1,0 +1,26 @@
+checks:
+  sales.customer_daily_metrics:
+
+    completeness:
+      - row_count > 0:
+          name: has_rows
+
+      - missing_count(order_date) = 0:
+          name: order_date_not_null
+
+      - missing_count(o_custkey) = 0:
+          name: customer_key_not_null
+
+    validity:
+      - failed rows:
+          name: non_negative_customer_daily_metrics
+          fail query: |
+            SELECT order_date, o_custkey, total_orders, total_revenue
+            FROM sales.customer_daily_metrics
+            WHERE total_orders IS NULL
+               OR total_orders < 0
+               OR total_revenue IS NULL
+               OR total_revenue < 0
+          samples limit: 10
+          attributes:
+            description: "Daily customer metrics should be present and non-negative."

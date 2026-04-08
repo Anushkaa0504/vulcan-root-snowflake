@@ -1,0 +1,71 @@
+version: v1alpha
+type: vulcan
+name: vulcan-root-snowflake
+description: Managed DataOS deployment for the root Snowflake Vulcan data product
+tags:
+  - snowflake
+  - production
+  - depot
+
+spec:
+  runAsUser: "anushkarakeshtmdcio"
+  compute: qa-compute
+  engine: snowflake
+
+  repo:
+    url: https://bitbucket.org/rubik_/vulcan-examples
+    syncFlags:
+      - --ref=shreya-examples
+      - --submodules=off
+    baseDir: vulcan-examples/deployment-demo/snowflake-depot
+    secret: qa:git-sync
+
+  depots:
+    - dataos://snowflakevulcan?purpose=rw
+
+  workflow:
+    type: schedule
+    schedule:
+      crons:
+        - "0 3 * * *"
+      endOn: "2027-12-31T00:00:00-00:00"
+      timezone: UTC
+      concurrencyPolicy: Forbid
+
+    logLevel: INFO
+
+    resource:
+      request:
+        cpu: "500m"
+        memory: "1Gi"
+      limit:
+        cpu: "2000m"
+        memory: "4Gi"
+
+    migrate:
+      command: [vulcan]
+      arguments: [migrate]
+
+    plan:
+      command: [vulcan]
+      arguments:
+        - --log-to-stdout
+        - plan
+        - --auto-apply
+
+    run:
+      command: [vulcan]
+      arguments:
+        - --log-to-stdout
+        - run
+
+  api:
+    replicas: 3
+    logLevel: INFO
+    resource:
+      request:
+        cpu: "500m"
+        memory: "1Gi"
+      limit:
+        cpu: "2000m"
+        memory: "2Gi"
