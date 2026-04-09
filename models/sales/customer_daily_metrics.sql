@@ -1,5 +1,5 @@
 MODEL (
-  database ECOMMERCE_PLATFORM
+  database ECOMMERCE_PLATFORM,
   name sales.customer_daily_metrics,
   kind INCREMENTAL_BY_TIME_RANGE (
     time_column order_date,

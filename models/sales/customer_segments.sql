@@ -1,5 +1,5 @@
 MODEL (
-  database ECOMMERCE_PLATFORM
+  database ECOMMERCE_PLATFORM,
   name sales.customer_segments,
   kind FULL,
   grains (o_custkey),

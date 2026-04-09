@@ -1,5 +1,5 @@
 MODEL (
-  database ECOMMERCE_PLATFORM
+  database ECOMMERCE_PLATFORM,
   name sales.daily_events,
   kind INCREMENTAL_BY_TIME_RANGE (
     time_column event_date,
