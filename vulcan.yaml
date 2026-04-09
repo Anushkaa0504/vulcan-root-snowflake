@@ -1,0 +1,20 @@
+version: 1
+
+modelPaths:
+  - models
+
+models:
+  - name: customer_daily_metrics
+    path: models/sales/customer_daily_metrics.sql
+
+  - name: customer_monthly_metrics
+    path: models/sales/customer_monthly_metrics.sql
+
+  - name: customer_segments
+    path: models/sales/customer_segments.sql
+
+  - name: daily_events
+    path: models/sales/daily_events.sql
+
+  - name: stg_orders
+    path: models/staging/stg_orders.sql
