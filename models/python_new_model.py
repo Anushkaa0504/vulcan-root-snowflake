@@ -2,7 +2,7 @@ import pandas as pd
 from vulcan import ExecutionContext, model, ModelKindName
 
 @model(
-    "vulcan_example.python_new_model",
+    "ECOMMERCE_PLATFORM.vulcan_example.python_new_model",
     kind=dict(name=ModelKindName.FULL),
     columns={
         "O_CUSTKEY": "int",

@@ -3,7 +3,7 @@ from vulcan import ExecutionContext, model, ModelKindName
 
 
 @model(
-    "vulcan_example.python_customer_health_model",
+    "ECOMMERCE_PLATFORM.vulcan_example.python_customer_health_model",
     kind=dict(name=ModelKindName.FULL),
     depends_on=["sales.customer_segments"],
     columns={

@@ -1,6 +1,5 @@
 MODEL (
-  name mart.fct_events,
-  database ECOMMERCE_PLATFORM,
+  name ECOMMERCE_PLATFORM.mart.fct_events,
   kind FULL,
   columns (
     EVENT_DATE DATE,

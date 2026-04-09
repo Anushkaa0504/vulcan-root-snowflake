@@ -3,7 +3,7 @@ from vulcan import ExecutionContext, model, ModelKindName
 
 
 @model(
-    "vulcan_example.python_churn_model",
+    "ECOMMERCE_PLATFORM.vulcan_example.python_churn_model",
     kind=dict(name=ModelKindName.FULL),
     depends_on=["mart.features"],
     columns={

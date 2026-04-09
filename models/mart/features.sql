@@ -1,6 +1,5 @@
 MODEL (
-  name mart.features,
-  database ECOMMERCE_PLATFORM,
+  name ECOMMERCE_PLATFORM.mart.features,
   kind FULL
 );
 
