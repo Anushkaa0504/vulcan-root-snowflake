@@ -1,6 +1,6 @@
 MODEL (
-  database ECOMMERCE_PLATFORM,
   name sales.customer_segments,
+  database ECOMMERCE_PLATFORM,
   kind FULL,
   grains (o_custkey),
   description 'Customer spend and order frequency segments derived from mart.features'
