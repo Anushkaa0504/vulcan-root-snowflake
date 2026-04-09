@@ -1,4 +1,5 @@
 MODEL (
+  database ECOMMERCE_PLATFORM
   name sales.customer_monthly_metrics,
   kind INCREMENTAL_BY_TIME_RANGE (
     time_column month_start,

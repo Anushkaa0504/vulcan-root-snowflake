@@ -1,4 +1,5 @@
 MODEL (
+  database ECOMMERCE_PLATFORM
   name mart.fct_events,
   kind FULL,
   columns (

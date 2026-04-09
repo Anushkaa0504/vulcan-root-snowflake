@@ -1,4 +1,5 @@
 MODEL (
+  database ECOMMERCE_PLATFORM
   name staging.stg_orders,
   kind VIEW
 );
