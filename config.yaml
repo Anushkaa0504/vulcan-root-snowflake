@@ -20,7 +20,7 @@ gateways:
   default:
     connection:
       type: depot
-      address: dataos://snowflakedepottpchsf1
+      address: dataos://snowflakevulcan
 
 model_defaults:
   dialect: snowflake

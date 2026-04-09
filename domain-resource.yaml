@@ -13,14 +13,17 @@ spec:
   engine: snowflake
 
   repo:
-    url: https://github.com/Anushkaa0504/vulcan-root-snowflake.git
+    url: https://github.com/Anushkaa0504/vulcan-root-snowflake
     syncFlags:
       - --ref=main
       - --submodules=off
-    baseDir: .
+    baseDir: vulcan-root-snowflake
+    secret: engineering:git-sync
 
   depots:
-    - dataos://snowflakedepottpchsf1?purpose=rw
+    - dataos://snowflakevulcan?purpose=rw
+
+  
 
   workflow:
     type: schedule

@@ -9,6 +9,11 @@ checks_old/
 semantics_old/
 ml_container/.logs/
 ml_container/
+models/.logs/
+models/checks/full_model.yml
+models/semantics/full_model.yml
+models/mart/weekly_orders.html
+docker/ssl/
 _write_test
 models/_write_test
 .DS_Store
