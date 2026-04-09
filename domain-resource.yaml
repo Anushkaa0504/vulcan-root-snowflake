@@ -9,7 +9,7 @@ tags:
 
 spec:
   runAsUser: "anushkarakeshtmdcio"
-  compute: qa-compute
+  compute: comet-compute
   engine: snowflake
 
   repo:
@@ -20,7 +20,7 @@ spec:
     baseDir: .
 
   depots:
-    - dataos://snowflakevulcan?purpose=rw
+    - dataos://snowflakedepottpchsf1?purpose=rw
 
   workflow:
     type: schedule

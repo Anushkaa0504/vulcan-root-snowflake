@@ -1,6 +1,6 @@
 name: vulcan-root-snowflake
 display_name: Root Snowflake Data Product
-tenant: qa
+tenant: engineering
 description: Snowflake analytics on SNOWFLAKE_SAMPLE_DATA.TPCH_SF1 using depot-based connection.
 
 tags:
@@ -20,7 +20,7 @@ gateways:
   default:
     connection:
       type: depot
-      address: dataos://snowflakevulcan
+      address: dataos://snowflakedepottpchsf1
 
 model_defaults:
   dialect: snowflake
