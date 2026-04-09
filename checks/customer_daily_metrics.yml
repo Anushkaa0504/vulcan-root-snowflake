@@ -1,5 +1,5 @@
 checks:
-  sales.customer_daily_metrics:
+  ECOMMERCE_PLATFORM.sales.customer_daily_metrics:
 
     completeness:
       - row_count > 0:

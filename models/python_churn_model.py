@@ -5,7 +5,7 @@ from vulcan import ExecutionContext, model, ModelKindName
 @model(
     "ECOMMERCE_PLATFORM.vulcan_example.python_churn_model",
     kind=dict(name=ModelKindName.FULL),
-    depends_on=["mart.features"],
+    depends_on=["ECOMMERCE_PLATFORM.mart.features"],
     columns={
         "O_CUSTKEY": "int",
         "TOTAL_ORDERS": "int",
@@ -18,7 +18,7 @@ from vulcan import ExecutionContext, model, ModelKindName
     },
 )
 def execute(context: ExecutionContext, **kwargs):
-    features_table = context.resolve_table("mart.features")
+    features_table = context.resolve_table("ECOMMERCE_PLATFORM.mart.features")
 
     df = context.fetchdf(f"""
         SELECT

@@ -1,5 +1,5 @@
 checks:
-  staging.stg_orders:
+  ECOMMERCE_PLATFORM.staging.stg_orders:
 
     accuracy:
       - row_count > 1:

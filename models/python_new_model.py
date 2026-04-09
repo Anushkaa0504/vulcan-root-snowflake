@@ -14,7 +14,7 @@ from vulcan import ExecutionContext, model, ModelKindName
 )
 def execute(context: ExecutionContext, **kwargs):
 
-    features_table = context.resolve_table("mart.features")
+    features_table = context.resolve_table("ECOMMERCE_PLATFORM.mart.features")
 
     df = context.fetchdf(f"""
         SELECT

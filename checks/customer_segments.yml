@@ -1,5 +1,5 @@
 checks:
-  sales.customer_segments:
+  ECOMMERCE_PLATFORM.sales.customer_segments:
 
     completeness:
       - row_count > 0:

@@ -1,5 +1,5 @@
 checks:
-  sales.daily_events:
+  ECOMMERCE_PLATFORM.sales.daily_events:
 
     completeness:
       - row_count > 0:

@@ -1,5 +1,5 @@
 semantic_models:
-  sales.customer_daily_metrics:
+  ECOMMERCE_PLATFORM.sales.customer_daily_metrics:
     alias: customer_daily_metrics
 
     dimensions:

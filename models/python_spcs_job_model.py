@@ -9,7 +9,7 @@ def _esc(v: str) -> str:
 
 
 @model(
-    "vulcan_example.python_spcs_job_model",
+    "ECOMMERCE_PLATFORM.vulcan_example.python_spcs_job_model",
     kind=dict(name=ModelKindName.FULL),
     columns={
         "JOB_NAME": "text",
@@ -17,7 +17,7 @@ def _esc(v: str) -> str:
     },
 )
 def execute(context: ExecutionContext, execution_time: datetime, **kwargs):
-    context.resolve_table("mart.features")
+    context.resolve_table("ECOMMERCE_PLATFORM.mart.features")
 
     job_name = f"ML_JOB_{execution_time.strftime('%Y%m%d_%H%M%S')}".upper()
     warehouse = os.getenv("SNOWFLAKE_WAREHOUSE", "COMPUTE_WH")

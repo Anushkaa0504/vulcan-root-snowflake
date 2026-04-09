@@ -1,5 +1,5 @@
 semantic_models:
-  mart.fct_events:
+  ECOMMERCE_PLATFORM.mart.fct_events:
     alias: fct_events
 
     dimensions:

@@ -5,7 +5,7 @@ from vulcan import ExecutionContext, model, ModelKindName
 @model(
     "ECOMMERCE_PLATFORM.vulcan_example.python_customer_health_model",
     kind=dict(name=ModelKindName.FULL),
-    depends_on=["sales.customer_segments"],
+    depends_on=["ECOMMERCE_PLATFORM.sales.customer_segments"],
     columns={
         "O_CUSTKEY": "int",
         "SPEND_TIER": "text",
@@ -20,7 +20,7 @@ from vulcan import ExecutionContext, model, ModelKindName
     },
 )
 def execute(context: ExecutionContext, **kwargs):
-    segments_table = context.resolve_table("sales.customer_segments")
+    segments_table = context.resolve_table("ECOMMERCE_PLATFORM.sales.customer_segments")
 
     df = context.fetchdf(
         f"""

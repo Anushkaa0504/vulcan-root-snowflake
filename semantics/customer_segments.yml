@@ -1,5 +1,5 @@
 semantic_models:
-  sales.customer_segments:
+  ECOMMERCE_PLATFORM.sales.customer_segments:
     alias: customer_segments
 
     dimensions:
