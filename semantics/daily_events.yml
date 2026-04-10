@@ -8,9 +8,9 @@ semantic_models:
 
     measures:
       total_events:
-        expression: "{daily_events.TOTAL_EVENTS}"
+        expression: "{ECOMMERCE_PLATFORM.daily_events.TOTAL_EVENTS}"
         type: sum
 
       unique_items:
-        expression: "{daily_events.UNIQUE_ITEMS}"
+        expression: "{ECOMMERCE_PLATFORM.daily_events.UNIQUE_ITEMS}"
         type: sum
