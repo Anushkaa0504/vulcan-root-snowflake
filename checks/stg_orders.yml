@@ -11,3 +11,7 @@ checks:
     completeness:
       - missing_count(o_orderkey) = 0:
           name: order_key_not_null
+    
+    uniqueness:
+      - duplicate_count(o_orderkey) = 0:
+          name: orderkey_unique
