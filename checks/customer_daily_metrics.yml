@@ -16,7 +16,7 @@ checks:
           name: non_negative_customer_daily_metrics
           fail query: |
             SELECT order_date, o_custkey, total_orders, total_revenue
-            FROM sales.customer_daily_metrics
+            FROM ECOMMERCE_PLATFORM.sales.customer_daily_metrics
             WHERE total_orders IS NULL
                OR total_orders < 0
                OR total_revenue IS NULL

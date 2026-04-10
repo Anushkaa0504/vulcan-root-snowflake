@@ -13,7 +13,7 @@ checks:
           name: spend_tier_enum
           fail query: |
             SELECT o_custkey, spend_tier
-            FROM sales.customer_segments
+            FROM ECOMMERCE_PLATFORM.sales.customer_segments
             WHERE spend_tier NOT IN ('PLATINUM', 'GOLD', 'SILVER', 'BRONZE')
                OR spend_tier IS NULL
           samples limit: 10
@@ -24,7 +24,7 @@ checks:
           name: frequency_segment_enum
           fail query: |
             SELECT o_custkey, order_frequency_segment
-            FROM sales.customer_segments
+            FROM ECOMMERCE_PLATFORM.sales.customer_segments
             WHERE order_frequency_segment NOT IN ('FREQUENT', 'ACTIVE', 'OCCASIONAL')
                OR order_frequency_segment IS NULL
           samples limit: 10
