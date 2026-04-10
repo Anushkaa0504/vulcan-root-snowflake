@@ -9,4 +9,4 @@ SELECT
     o_orderdate,
     o_totalprice,
     1 AS total_events
-FROM raw.raw_orders;
+FROM ECOMMERCE_PLATFORM.raw.raw_orders;

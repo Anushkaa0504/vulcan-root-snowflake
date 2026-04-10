@@ -1,5 +1,5 @@
 MODEL (
-  name raw.raw_orders,
+  name ECOMMERCE_PLATFORM.raw.raw_orders,
   kind VIEW
 );
 
