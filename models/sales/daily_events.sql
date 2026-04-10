@@ -14,7 +14,7 @@ SELECT
   o_orderdate AS event_date,
   COUNT(o_orderkey) AS total_events,
   COUNT(DISTINCT o_custkey) AS unique_items
-FROM DEMO_DB.RAW.RAW_ORDERS
+FROM ECOMMERCE_PLATFORM.staging.stg_orders
 WHERE o_orderdate BETWEEN @start_ds AND @end_ds
 GROUP BY o_orderdate
 ORDER BY o_orderdate

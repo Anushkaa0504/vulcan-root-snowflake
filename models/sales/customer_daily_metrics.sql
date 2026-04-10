@@ -19,7 +19,7 @@ SELECT
   COUNT(*) AS total_orders,
   SUM(o_totalprice) AS total_revenue,
   AVG(o_totalprice) AS avg_order_value
-FROM staging.stg_orders
+FROM ECOMMERCE_PLATFORM.staging.stg_orders
 WHERE o_orderdate BETWEEN @start_ds AND @end_ds
 GROUP BY o_orderdate, o_custkey
 ORDER BY order_date, o_custkey

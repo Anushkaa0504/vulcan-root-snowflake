@@ -22,4 +22,4 @@ SELECT
     WHEN total_orders >= 10 THEN 'ACTIVE'
     ELSE 'OCCASIONAL'
   END AS order_frequency_segment
-FROM mart.features
+FROM ECOMMERCE_PLATFORM.mart.features
