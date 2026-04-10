@@ -1,6 +1,6 @@
 MODEL (
   name ECOMMERCE_PLATFORM.sales.daily_events,
-  kind INCREMENTAL_BY_TIME_RANGE (
+  kind FULL (
     time_column event_date,
     batch_size 1
   ),
@@ -15,6 +15,5 @@ SELECT
   COUNT(o_orderkey) AS total_events,
   COUNT(DISTINCT o_custkey) AS unique_items
 FROM ECOMMERCE_PLATFORM.staging.stg_orders
-WHERE o_orderdate BETWEEN @start_ds AND @end_ds
 GROUP BY o_orderdate
 ORDER BY o_orderdate
